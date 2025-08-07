@@ -6,15 +6,19 @@ class Book:
 
 list_books = []
 
-def add_books(self):
+def add_books():
     try:
         title = input("Ingrese el titulo del libro: ")
         author = input("Ingrese el autor del libro: ")
         year = int(input("Ingrese el año de lanzamiento de libro: "))
+        book = Book(title, author, year)
+        list_books.append(book)
     except ValueError:
         print("El valor ingresado es incorrecto\n")
     except Exception as e:
         print(F"Error inesperado: {e} \n")
+    else:
+        print(f"\nLibro registrado exitosamente\n")
 
 def show_books():
     if not list_books:
@@ -34,8 +38,9 @@ def remove_books():
         book_found = False
         for book in list_books:
             if book.title.lower() == book_user.lower():
-                list_books.remove(book_user)
+                list_books.remove(book)
                 book_found = True
+                print("Libro eliminado exitosamente\n")
                 break
             else:
                 print(F"El libro {book.title} no existe\n")
